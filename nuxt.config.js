@@ -1,17 +1,22 @@
 export default {
   mode: 'spa',
+  server: {
+    port: 3000, // default: 3000
+    host: '192.168.1.171' // default: localhost
+  },
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Neeeu',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          'We are a multidisciplinary design studio, creating delightful digital experiences for the real world.'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -43,7 +48,8 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/device'
   ],
   /*
    ** Axios module configuration
@@ -70,5 +76,15 @@ export default {
         icons: ['fab']
       }
     ]
+  },
+  renderer: {
+    shouldPreload: (file, type) => {
+      return ['script', 'style', 'font'].includes(type)
+    }
+  },
+  bundleRenderer: {
+    shouldPreload: (file, type) => {
+      return ['script', 'style', 'font'].includes(type)
+    }
   }
 }

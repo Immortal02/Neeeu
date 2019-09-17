@@ -1,0 +1,412 @@
+<template>
+  <div class="container main-content">
+    <header>
+      <div class="wrap">
+        <nuxt-link to="/" class="logo">
+          <img src="~/assets/images/logo.svg" />
+        </nuxt-link>
+        <nav id="menu" :class="isWhiteMenu() ? 'white-menu' : 'black-menu'">
+          <li class="drop">
+            <div class="menu-item" @mouseleave="remove_drop_menu()">
+              <a>
+                <div class="menu-item" @click="display_drop_menu()">
+                  We Create
+                  <font-awesome-icon icon="chevron-down" class="arrow-icon" />
+                </div>
+              </a>
+              <ul class="drop_menu" @mouseleave="remove_drop_menu()">
+                <nuxt-link to="/">products & services</nuxt-link>
+                <nuxt-link to="/">museum experiences</nuxt-link>
+                <nuxt-link to="/">media installations</nuxt-link>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <nuxt-link to="/Project" class="menu-item">
+              <div class="menu-item">Work</div>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/Vision" class="menu-item">
+              <div class="menu-item">Approach</div>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/About" class="menu-item">
+              <div class="menu-item">About</div>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/Contact" class="menu-item">
+              <div class="menu-item">Contact</div>
+            </nuxt-link>
+          </li>
+        </nav>
+        <div id="hamburger" @click="display_menu()">
+          <font-awesome-icon v-if="!isDropDown" icon="bars" class="bars" />
+          <font-awesome-icon v-else icon="times" class="bars" />
+        </div>
+      </div>
+    </header>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isWhiteMenu() {
+        if (this.$nuxt.$route.path === '/') return true
+        return false
+      },
+      isDropDown: false
+    }
+  },
+  methods: {
+    display_menu() {
+      const body = document.getElementsByTagName('body')[0]
+      !body.classList.contains('display_menu')
+        ? body.classList.add('display_menu')
+        : body.classList.remove('display_menu')
+
+      !body.classList.contains('display_menu')
+        ? (this.isDropDown = false)
+        : (this.isDropDown = true)
+    },
+    display_drop_menu() {
+      const dropMenu = event.target.parentElement.parentElement.getElementsByClassName(
+        'drop_menu'
+      )[0]
+      const dropMenus = document.getElementsByClassName('drop_menu')
+
+      Array.from(dropMenus).forEach(function(e) {
+        if (e !== dropMenu) {
+          e.classList.remove('display')
+        }
+      })
+      const lis = document.getElementById('menu').getElementsByTagName('li')
+      Array.from(lis).forEach(function(e) {
+        e.style.marginTop = 0
+      })
+      !dropMenu.classList.contains('display')
+        ? dropMenu.classList.add('display')
+        : dropMenu.classList.remove('display')
+      if (window.innerWidth < 660 && dropMenu.classList.contains('display')) {
+        event.target.parentElement.nextSibling.nextSibling.style.marginTop =
+          dropMenu.clientHeight + 'px'
+      }
+    },
+    remove_drop_menu() {
+      const dropMenus = document.getElementsByClassName('drop_menu')
+      Array.from(dropMenus).forEach(function(e) {
+        e.classList.remove('display')
+      })
+      this.isDropDown = true
+    }
+  }
+}
+window.addEventListener('resize', function(event) {
+  closeAllMenu()
+  document.getElementsByTagName('body')[0].classList.remove('display_menu')
+})
+function closeAllMenu() {
+  const lis = document.getElementById('menu').getElementsByTagName('li')
+  Array.from(lis).forEach(function(e) {
+    e.style.marginTop = 0
+  })
+  const dropMenus = document.getElementsByClassName('drop_menu')
+  Array.from(dropMenus).forEach(function(e) {
+    e.classList.remove('display')
+  })
+}
+</script>
+
+<style lang="scss" scoped>
+$cwhite: white;
+$cblack: black;
+@import '~assets/scss/global.scss';
+
+
+.header {
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Bluu Next';
+}
+.main-content {
+  margin: 30px auto;
+  max-width: 1600px;
+}
+.white-menu {
+  .menu-item {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+.black-menu {
+  .menu-item {
+    color: #262626;
+  }
+}
+.display_menu {
+  overflow-y: hidden;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+.menu-item {
+  padding: 10px 15px;
+  color: $cblack;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+}
+.arrow-icon {
+  margin-left: 10px;
+  font-size: 14px;
+}
+a:hover .menu-item,
+a:active .menu-item,
+a.nuxt-link-active .menu-item {
+  color: white;
+  background-image: linear-gradient(90deg, #ff6969, #9900ce);
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+header {
+  display: flex;
+  z-index: 1;
+  padding: 10px 0;
+  background-color: transparent;
+  width: 100%;
+  top: 0;
+  justify-content: center;
+  transition: 0.33s;
+
+  .wrap {
+    padding: 0 2%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  img {
+    width: 100px;
+  }
+
+  #menu {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Bluu Next';
+    font-size: 18px;
+    font-weight: bold;
+    color: $cblack;
+
+    li {
+      position: relative;
+      user-select: none;
+      i {
+        width: 12px;
+        height: 12px;
+        background-color: $cblack;
+      }
+      a {
+        cursor: pointer;
+        border: none;
+        transition: 0.15s;
+        background: none;
+        &:hover {
+          border-bottom-color: #0000ff;
+          color: #0000ff;
+          i {
+            background-color: #0000ff;
+          }
+        }
+      }
+    }
+  }
+
+  .drop_menu {
+    position: absolute;
+    display: block;
+    top: 100%;
+    transform: scaleY(0);
+    width: auto;
+    transform-origin: top;
+    background-image: linear-gradient(to bottom, #560065, #120078);
+    font-size: 14px;
+    font-family: 'objektiv-mk2';
+    font-weight: 400;
+    line-height: 2.08;
+    letter-spacing: 3px;
+    width: 250px;
+    transition: 0.25s;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    a {
+      margin-left: 20px;
+      display: block;
+      transition: 0.45s;
+      opacity: 0;
+      margin-right: 20px;
+      padding: 10px 0 0 0;
+    }
+  }
+
+  .drop_menu.display {
+    transform: scaleY(1);
+    a {
+      opacity: 1;
+      color: white;
+    }
+  }
+
+  #hamburger {
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    transform: translateY(-50%);
+
+    span {
+      height: 2px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      background-color: $cblack;
+      display: block;
+      transition: 0.33s;
+      &:nth-child(1) {
+        width: 12px;
+      }
+      &:nth-child(2) {
+        width: 24px;
+      }
+      &:nth-child(3) {
+        width: 12px;
+      }
+    }
+
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(2px, 1px);
+    }
+    span:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+    span:nth-child(3) {
+      transform: rotate(45deg) translate(6px, -9px);
+    }
+  }
+}
+@media (max-width: $screen-xs-max) {
+  .main-content {
+    margin: 0px auto;
+    max-width: 1600px;
+    background-image: url('~@/assets/images/footer.png');
+    background-size: cover;
+    height: 100vh;
+    color: white;
+  }
+  .white-menu {
+    .menu-item {
+      color: white;
+    }
+  }
+  .black-menu {
+    .menu-item {
+      color: white;
+    }
+  }
+  .menu-item {
+    color: white;
+    font-family: 'Bluu Next';
+    font-size: 56px;
+    font-weight: bold;
+    line-height: 1.13;
+  }
+  a:hover .menu-item,
+  a:active .menu-item,
+  a.nuxt-link-active .menu-item {
+    color: white;
+    background-image: none;
+    clear: none;
+  }
+  header .wrap {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 15px;
+  }
+  header .logo {
+    align-self: flex-start;
+    margin-left: 30px;
+    margin-top: 15px;
+  }
+  header .bars {
+    font-size: 24px;
+    font-weight: 200;
+  }
+  header img {
+    width: 75px;
+  }
+  header #hamburger {
+    display: block;
+    right: 40px;
+    top: 58px;
+  }
+  header #menu {
+    width: 100%;
+    display: block;
+    height: 0;
+    transform-origin: 50% 0;
+    transition: 0.33s ease;
+    flex-direction: column;
+  }
+  .display_menu header #menu {
+    // height: 100%;
+    margin-top: 30px;
+    li {
+      height: calc((100vh - 113px) / 8);
+      transition: 0.25s ease;
+      opacity: 1;
+      display: block;
+    }
+  }
+  header #menu li {
+    height: 0;
+    opacity: 0;
+    margin-left: 0;
+    transition: 0.25s ease;
+    i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $cblack;
+    }
+  }
+  header .drop_menu {
+    top: calc((100vh - 113px) / 8);
+    box-shadow: none;
+    left: 0;
+    padding-bottom: 0;
+    width: 100%;
+    a {
+      width: 100%;
+      padding: 0 !important;
+      padding-left: 40px !important;
+      margin: 0;
+      border-bottom: 1px solid $cblack !important;
+    }
+  }
+}
+</style>
