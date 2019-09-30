@@ -22,8 +22,10 @@
       </div>
     </div>
     <div class="detail">
-      <div>READ MORE</div>
-      <div class="arrow">→</div>
+      <div class="detail-btn">
+        <span>READ MORE</span>
+        <img class="arrow-icon" src="~/assets/icons/arrow-right-black.svg" />
+      </div>
     </div>
   </div>
 </template>
@@ -56,9 +58,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .career-item {
-  color: #262626;
   padding: 30px 20px;
   width: 100%;
   position: relative;
@@ -74,7 +76,7 @@ export default {
   left: 315px;
   z-index: 1;
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 600px) {
     top: 40px;
     left: 180px;
   }
@@ -85,7 +87,7 @@ export default {
   right: 30%;
   z-index: 1;
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 600px) {
     top: 60px;
     right: 0%;
   }
@@ -96,7 +98,7 @@ export default {
   left: 80px;
   z-index: 1;
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 600px) {
     top: 10px;
     left: 80px;
   }
@@ -113,50 +115,37 @@ export default {
   text-align: left;
 
   .title {
-    font-size: 48px;
-    font-family: 'Bluu Next';
-    font-weight: bold;
+    @include desktoptitleh3();
     margin: 10px 0px;
-    line-height: 1.21;
-    letter-spacing: normal;
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 33px;
+    @media (max-width: 600px) {
+      @include mobiletitleh3();
     }
   }
 
   .content {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.78;
-    letter-spacing: normal;
+    @include desktoppregular();
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 18px;
+    @media (max-width: 600px) {
+      @include mobilepregular();
     }
   }
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 600px) {
     padding: 0px;
   }
 }
 .detail {
-  font-size: 12px;
-  font-weight: bold;
+  @include buttonlinkblack();
   text-align: right;
   border-bottom: solid 1.2px #262626;
   padding: 10px 0px;
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  line-height: 2.08;
-  letter-spacing: 3px;
-  cursor: pointer;
 
-  .arrow {
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont;
-    font-size: 20px;
-    padding: 0px 10px;
+  .detail-btn {
+    cursor: pointer;
   }
 }
 </style>

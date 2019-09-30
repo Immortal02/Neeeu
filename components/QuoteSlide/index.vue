@@ -19,10 +19,12 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
+
 .quote {
   padding: 0px 200px;
   margin: 150px auto;
-  font-weight: bold;
   display: flex;
   justify-content: center;
 
@@ -39,11 +41,7 @@ export default {}
   text-align: left;
 }
 .title {
-  font-size: 48px;
-  font-family: 'Bluu Next';
-  line-height: 1.21;
-  letter-spacing: normal;
-  color: #262626;
+  @include desktoptitleh3();
   min-width: 500px;
 
   .quote-open {
@@ -70,21 +68,16 @@ export default {}
 
   @media (max-width: 900px) {
     min-width: initial;
-    font-size: 30px;
-    line-height: 1.4;
-    letter-spacing: 0.4px;
+    @include mobilequote();
   }
 }
 .sub-title {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.53px;
+  @include desktoptag();
   color: #57595d;
   padding: 30px 0px;
 
   @media (max-width: 900px) {
-    font-size: 16px;
+    @include mobiletag();
   }
 }
 </style>

@@ -1,21 +1,32 @@
 <template>
   <div class="partner">
     <div class="topic">
-      <div class="title">OUR PARTNERS</div>
-      <div class="sub-title">Our sexy partners</div>
+      <div class="sub-title">OUR PARTNERS</div>
+      <div class="title">Our sexy partners</div>
     </div>
     <div class="gallery">
-      <img class="partner-item" src="~/assets/images/home/partner-1.png" />
-      <img class="partner-item" src="~/assets/images/home/partner-2.png" />
-      <img class="partner-item" src="~/assets/images/home/partner-3.png" />
-      <img class="partner-item" src="~/assets/images/home/partner-4.png" />
-      <img class="partner-item" src="~/assets/images/home/partner-5.png" />
+      <img
+        v-for="(item, index) in partnerData"
+        :key="index"
+        v-bind="item"
+        class="partner-item"
+        :src="item.image"
+      />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import PartnerData from '~/assets/partner-data'
+
+export default {
+  name: 'Partner',
+  data() {
+    return {
+      partnerData: PartnerData
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -23,13 +34,13 @@ export default {}
 
 .partner {
   padding: 0px 0px 100px 0px;
-
-  @media (max-width: $screen-xs-max) {
-    padding: 50px 30px;
-  }
 }
 .topic {
   margin-bottom: 50px;
+
+  @media (max-width: $screen-xs-max) {
+    margin-bottom: 0px;
+  }
 }
 .gallery {
   display: flex;
@@ -40,11 +51,11 @@ export default {}
   .partner-item {
     object-fit: contain;
     max-width: 100%;
-    padding: 20px 30px;
+    margin: 20px 30px;
     cursor: pointer;
 
     @media (max-width: $screen-xs-max) {
-      padding: 20px 10px;
+      margin: 20px 10px;
     }
   }
 

@@ -3,8 +3,8 @@
     <div class="image" :style="background(image)">
       <div class="main-content">
         <div class="topic">
-          <div class="title">{{ title }}</div>
-          <div class="sub-title">{{ subTitle }}</div>
+          <div class="sub-title">{{ title }}</div>
+          <div class="title">{{ subTitle }}</div>
         </div>
       </div>
     </div>
@@ -14,11 +14,16 @@
       </div>
       <div class="thumbnail">
         <img :src="thumbnailImage" class="thumbnail-image" />
-        <div class="title">{{ thumbnailTitle }}</div>
         <div class="sub-title">{{ thumbnailSubTitle }}</div>
+        <div class="title">{{ thumbnailTitle }}</div>
         <div class="detail">
-          <div>READ MORE</div>
-          <img class="arrow-icon" src="~/assets/icons/arrow-right.png" />
+          <div class="detail-btn" @click="itemClick(projectIndex)">
+            <span>READ MORE</span>
+            <img
+              class="arrow-icon"
+              src="~/assets/icons/arrow-right-black.svg"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -44,6 +49,10 @@ export default {
       type: String,
       default: ''
     },
+    projectIndex: {
+      type: Number,
+      default: 1
+    },
     thumbnailImage: {
       type: String,
       default: ''
@@ -63,12 +72,20 @@ export default {
         return `backgroundImage: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), url(${image})`
       }
     }
+  },
+  methods: {
+    itemClick(index) {
+      this.$router.push({
+        path: '/Project/' + index
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .vision-card {
   color: white;
@@ -94,22 +111,23 @@ export default {
     bottom: 50px;
     padding: 0px;
 
-    .title {
-      font-size: 12px;
-      font-weight: 500;
+    .sub-title {
+      @include mobilesubtitle();
+      color: $white;
     }
 
-    .sub-title {
-      font-size: 48px;
-      font-weight: bold;
+    .title {
+      @include desktoptitleh3();
+      color: $white;
 
-      @media (max-width: $screen-xs-max) {
-        font-size: 33px;
+      @media (max-width: 520px) {
+        @include mobiletitleh3();
+        color: $white;
       }
     }
   }
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 830px) {
     padding: 30px 30px;
   }
 }
@@ -118,57 +136,62 @@ export default {
   flex-wrap: wrap;
   padding: 30px 100px;
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 30px;
+  }
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+    align-items: center;
     display: block;
     padding: 20px 0px;
   }
 }
 .content {
+  @include mobileplarge();
   flex: 3;
-  color: #262626;
   padding: 30px;
   text-align: left;
-  font-size: 20px;
-  font-weight: 300;
 
-  @media (max-width: $screen-xs-max) {
-    font-size: 18px;
+  @media (max-width: 1100px) {
+    width: 500px;
+  }
+
+  @media (max-width: 520px) {
+    @include mobilepmedium();
+    width: auto;
   }
 }
 .thumbnail {
   flex: 2;
-  color: #262626;
   padding: 30px 30px;
   text-align: left;
 
   .thumbnail-image {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .title {
-    font-size: 14px;
-    font-weight: 500;
-    margin: 15px 0px;
-
-    @media (max-width: $screen-xs-max) {
-      font-size: 12px;
-    }
   }
 
   .sub-title {
-    font-size: 22px;
-    font-weight: bold;
+    @include desktopsubtitle();
+    margin: 15px 0px;
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 20px;
+    @media (max-width: 520px) {
+      @include mobilesubtitle();
+    }
+  }
+
+  .title {
+    @include desktoptitleh6();
+
+    @media (max-width: 520px) {
+      @include mobiletitleh6();
     }
   }
 
   .detail {
-    font-size: 12px;
-    font-weight: bold;
+    @include buttonlinkblack();
     text-align: right;
     margin: 20px 0px;
     border-bottom: solid 1px #262626;
@@ -176,13 +199,18 @@ export default {
     align-items: center;
     display: flex;
     justify-content: flex-end;
-    cursor: pointer;
 
-    .arrow {
-      font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont;
-      font-size: 20px;
-      padding-left: 10px;
+    .detail-btn {
+      cursor: pointer;
     }
+  }
+
+  @media (max-width: 1100px) {
+    width: 500px;
+  }
+
+  @media (max-width: 520px) {
+    width: auto;
   }
 }
 </style>

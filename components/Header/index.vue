@@ -12,20 +12,35 @@
                 <div
                   class="menu-item drop-item"
                   @mouseover="display_drop_menu()"
+                  @mouseleave="remove_drop_menu()"
+                  @click="display_mobile_drop_menu()"
                 >
                   We Create
-                  <img class="icon" src="~/assets/icons/chevron-down.png" />
+                  <img
+                    v-if="isWhiteMenu()"
+                    class="icon"
+                    src="~/assets/icons/chevron-down-white.svg"
+                  />
+                  <img
+                    v-else
+                    class="icon"
+                    src="~/assets/icons/chevron-down-black.svg"
+                  />
                 </div>
               </a>
-              <ul class="drop_menu" @mouseleave="remove_drop_menu()">
+              <ul
+                class="drop_menu"
+                @mouseleave="remove_drop_menu()"
+                @mouseover="display_drop_menu()"
+              >
                 <div class="drop-menu-body">
                   <nuxt-link to="/Career">
                     <div @click="display_menu()">products & services</div>
                   </nuxt-link>
-                  <nuxt-link to="/Wow">
+                  <nuxt-link to="/">
                     <div @click="display_menu()">museum experiences</div>
                   </nuxt-link>
-                  <nuxt-link to="/">
+                  <nuxt-link to="/Wow">
                     <div @click="display_menu()">media installations</div>
                   </nuxt-link>
                 </div>
@@ -59,11 +74,20 @@
           @click="display_menu()"
         >
           <img
-            v-if="!isDropDown"
+            v-if="isMenuDisplayed"
+            src="~/assets/icons/cross-white.svg"
             class="hamburger-icon"
-            src="~/assets/icons/menu.png"
           />
-          <img v-else src="~/assets/icons/cross.png" class="hamburger-icon" />
+          <img
+            v-else-if="isWhiteMenu()"
+            src="~/assets/icons/menu-white.svg"
+            class="hamburger-icon"
+          />
+          <img
+            v-else
+            src="~/assets/icons/menu-black.svg"
+            class="hamburger-icon"
+          />
         </div>
       </div>
     </header>
@@ -80,7 +104,8 @@ export default {
         if (this.$nuxt.$route.path === '/Wow') return true
         return false
       },
-      isDropDown: false
+      isDropDown: false,
+      isMenuDisplayed: false
     }
   },
   methods: {
@@ -91,10 +116,33 @@ export default {
         : body.classList.remove('display_menu')
 
       !body.classList.contains('display_menu')
-        ? (this.isDropDown = false)
-        : (this.isDropDown = true)
+        ? (this.isMenuDisplayed = false)
+        : (this.isMenuDisplayed = true)
     },
     display_drop_menu() {
+      const dropMenu = event.target.parentElement.parentElement.getElementsByClassName(
+        'drop_menu'
+      )[0]
+      if (!dropMenu) return
+      const dropMenus = document.getElementsByClassName('drop_menu')
+
+      Array.from(dropMenus).forEach(function(e) {
+        e.classList.remove('display')
+      })
+      const lis = document.getElementById('menu').getElementsByTagName('li')
+      Array.from(lis).forEach(function(e) {
+        e.style.marginTop = 0
+      })
+      dropMenu.classList.add('display')
+    },
+    remove_drop_menu() {
+      const dropMenus = document.getElementsByClassName('drop_menu')
+      Array.from(dropMenus).forEach(function(e) {
+        e.classList.remove('display')
+      })
+      this.isDropDown = true
+    },
+    display_mobile_drop_menu() {
       const dropMenu = event.target.parentElement.parentElement.getElementsByClassName(
         'drop_menu'
       )[0]
@@ -113,17 +161,6 @@ export default {
       !dropMenu.classList.contains('display')
         ? dropMenu.classList.add('display')
         : dropMenu.classList.remove('display')
-      if (window.innerWidth < 660 && dropMenu.classList.contains('display')) {
-        event.target.parentElement.nextSibling.nextSibling.style.marginTop =
-          '10px'
-      }
-    },
-    remove_drop_menu() {
-      const dropMenus = document.getElementsByClassName('drop_menu')
-      Array.from(dropMenus).forEach(function(e) {
-        e.classList.remove('display')
-      })
-      this.isDropDown = true
     }
   }
 }
@@ -152,7 +189,6 @@ $cblack: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: 'Bluu Next';
 }
 .main-content {
   margin: 30px auto;
@@ -246,11 +282,16 @@ header {
 
   .icon {
     margin-left: 10px;
-    width: 14px;
+    width: 18px;
+
+    @media (max-width: 1090px) {
+      margin-left: 20px;
+      width: 30px;
+    }
   }
 
   .hamburger-icon {
-    width: 24px;
+    width: 36px;
   }
 
   #menu {
@@ -288,7 +329,7 @@ header {
     transform: scaleY(0);
     width: auto;
     transform-origin: top;
-    margin-top: 10px;
+    padding-top: 10px;
     font-size: 14px;
     font-family: 'objektiv-mk2';
     font-weight: 400;
@@ -419,8 +460,8 @@ header {
   }
   header #hamburger {
     display: block;
-    right: 40px;
-    top: 58px;
+    right: 20px;
+    top: 56px;
   }
   header #menu {
     width: 100%;
@@ -494,6 +535,7 @@ header {
     top: 20%;
     background-image: none;
     position: relative;
+    transition: 0.1s;
     a {
       width: 100%;
       text-align: left;

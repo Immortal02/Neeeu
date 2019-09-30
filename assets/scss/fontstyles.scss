@@ -1,0 +1,386 @@
+$white: #fff;
+$text-main: #262626;
+
+@mixin desktopnumbers {
+  font-family: BluuNext;
+  font-size: 100px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.8;
+  letter-spacing: 1.82px;
+  color: $white;
+}
+@mixin mobilenumbers {
+  font-family: BluuNext;
+  font-size: 90px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 1.64px;
+  color: $white;
+}
+@mixin desktoptitleh1 {
+  font-family: BluuNext;
+  font-size: 90px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  color: $white;
+}
+@mixin desktoptitleh2 {
+  font-family: BluuNext;
+  font-size: 80px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.13;
+  letter-spacing: 1.49px;
+  color: $text-main;
+}
+@mixin mobiletitleh1 {
+  font-family: BluuNext;
+  font-size: 66px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.12;
+  letter-spacing: normal;
+  color: $white;
+}
+@mixin mobiletitleh2 {
+  font-family: BluuNext;
+  font-size: 56px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin desktoptitleh3 {
+  font-family: BluuNext;
+  font-size: 48px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin desktoptitleh4 {
+  font-family: BluuNext;
+  font-size: 46px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin desktoptitleh5 {
+  font-family: BluuNext;
+  font-size: 38px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.16;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin desktopskill {
+  font-family: BluuNext;
+  font-size: 38px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.16;
+  letter-spacing: normal;
+  color: $white;
+}
+@mixin mobiletitleh3 {
+  font-family: BluuNext;
+  font-size: 33px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.09;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin mobilequote {
+  font-family: BluuNext;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+  color: $text-main;
+}
+@mixin desktopimpact {
+  font-family: BluuNext;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.47;
+  letter-spacing: normal;
+  color: $white;
+}
+@mixin desktopplarge {
+  font-family: ObjektivMk2;
+  font-size: 28px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.64;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin mobiletitleh4 {
+  font-family: BluuNext;
+  font-size: 26px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.23;
+  letter-spacing: -0.33px;
+  color: $text-main;
+}
+@mixin mobiletitleh5 {
+  font-family: BluuNext;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.17;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin mobileskill {
+  font-family: BluuNext;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.27;
+  letter-spacing: normal;
+  color: $white;
+}
+@mixin desktoptitleh6 {
+  font-family: ObjektivMk2;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin mobiletitleh6 {
+  font-family: ObjektivMk2;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin buttonmain {
+  font-family: BluuNext;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.36px;
+  text-align: center;
+  color: $white;
+}
+@mixin mobileplarge {
+  font-family: ObjektivMk2;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin desktoppmedium {
+  font-family: ObjektivMk2;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.55;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin menu-itemregularwhite {
+  font-family: BluuNext;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+@mixin menu-itemregularblack {
+  font-family: BluuNext;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: $text-main;
+}
+@mixin menu-itemhover {
+  font-family: BluuNext;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: $white;
+}
+@mixin mobilepmedium {
+  font-family: ObjektivMk2;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin desktoptag {
+  font-family: ObjektivMk2;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.53px;
+  color: #57595d;
+}
+@mixin desktoppregular {
+  font-family: ObjektivMk2;
+  font-size: 18px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.78;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin mobilepregular {
+  font-family: ObjektivMk2;
+  font-size: 17px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.76;
+  letter-spacing: normal;
+  color: $text-main;
+}
+@mixin mobiletag {
+  font-family: ObjektivMk2;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.53px;
+  color: #57595d;
+}
+@mixin desktopsubscript {
+  font-family: ObjektivMk2;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.47px;
+  text-align: right;
+  color: #57595d;
+}
+@mixin mobilesubscript {
+  font-family: ObjektivMk2;
+  font-size: 15px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  color: #57595d;
+}
+@mixin desktopsubtitle {
+  font-family: ObjektivMk2;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.79;
+  letter-spacing: 3.5px;
+  color: $text-main;
+}
+@mixin buttonlinkwhite {
+  font-family: ObjektivMk2-X;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.08;
+  letter-spacing: 3px;
+  color: $white;
+}
+@mixin buttonlinkblack {
+  font-family: ObjektivMk2-X;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.08;
+  letter-spacing: 3px;
+  color: $text-main;
+}
+@mixin mobilesubtitle {
+  font-family: ObjektivMk2;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.08;
+  letter-spacing: 3px;
+  color: $text-main;
+}
+@mixin desktopstitle{
+  font-family: BluuNext;
+  font-size: 60px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+}
+@mixin mobilestitle{
+  font-family: BluuNext;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}

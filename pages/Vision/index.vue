@@ -2,8 +2,8 @@
   <div>
     <div class="container main-content">
       <div class="topic">
-        <div class="title">OUR VISION</div>
-        <div class="sub-title">
+        <div class="sub-title">OUR VISION</div>
+        <div class="title">
           Discover our vision and get the see how epic we are!
         </div>
       </div>

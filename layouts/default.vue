@@ -20,9 +20,10 @@ export default {
 <style lang="scss">
 @import url('https://p.typekit.net/p.css?s=1&k=ago3kxj&ht=tk&f=26978.26982.26985&a=5102651&app=typekit&e=css');
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 @font-face {
-  font-family: 'Bluu Next';
+  font-family: 'BluuNext';
   src: url('~static/fonts/bluu-next/Fonts/webfonts/bluunext-bold-webfont.woff')
       format('woff'),
     url('~static/fonts/bluu-next/Fonts/webfonts/bluunext-bold-webfont.woff2')
@@ -31,7 +32,7 @@ export default {
 }
 
 @font-face {
-  font-family: 'objektiv-mk2';
+  font-family: 'ObjektivMk2';
   src: url('https://use.typekit.net/af/3a2a4a/00000000000000003b9add10/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
       format('woff2'),
     url('https://use.typekit.net/af/3a2a4a/00000000000000003b9add10/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3')
@@ -44,7 +45,7 @@ export default {
 }
 
 @font-face {
-  font-family: 'objektiv-mk2';
+  font-family: 'ObjektivMk2';
   src: url('https://use.typekit.net/af/e42109/00000000000000003b9add13/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3')
       format('woff2'),
     url('https://use.typekit.net/af/e42109/00000000000000003b9add13/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3')
@@ -57,7 +58,7 @@ export default {
 }
 
 @font-face {
-  font-family: 'objektiv-mk2';
+  font-family: 'ObjektivMk2';
   src: url('https://use.typekit.net/af/333f59/00000000000000003b9add18/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3')
       format('woff2'),
     url('https://use.typekit.net/af/333f59/00000000000000003b9add18/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3')
@@ -69,8 +70,15 @@ export default {
   font-weight: 800;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 html {
-  font-family: 'objektiv-mk2', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'ObjektivMk2', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -81,50 +89,9 @@ html {
 }
 
 body {
-  font-family: 'objektiv-mk2', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'ObjektivMk2', 'Helvetica Neue', Arial, sans-serif;
   color: #262626;
   width: 100%;
-
-  // @media (min-width: 1600px) {
-  //   max-width: 1600px;
-  //   margin: 0 auto;
-  // }
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
 }
 
 .container {
@@ -146,39 +113,29 @@ body {
   text-align: left;
 
   .title {
-    font-size: 14px;
-    font-family: 'objektiv-mk2';
-    font-weight: 500;
-    line-height: 1.79;
-    letter-spacing: 3.5px;
-    margin-bottom: 10px;
+    @include desktoptitleh2();
 
     @media (max-width: $screen-xs-max) {
-      font-size: 12px;
+      @include mobiletitleh2();
     }
   }
 
   .sub-title {
-    font-size: 80px;
-    font-family: 'Bluu Next';
-    font-weight: bold;
-    line-height: 1.13;
-    letter-spacing: 1.49px;
+    @include desktopsubtitle();
+    text-transform: uppercase;
+    margin-bottom: 10px;
 
     @media (max-width: $screen-xs-max) {
-      font-size: 56px;
+      @include mobilesubtitle();
     }
   }
 
   .content {
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1.6;
-    letter-spacing: normal;
+    @include mobileplarge();
     margin: 30px 0px;
 
     @media (max-width: $screen-xs-max) {
-      font-size: 17px;
+      @include mobilepregular();
     }
   }
 
@@ -188,10 +145,13 @@ body {
   }
 }
 .icon {
-  width: 14px;
+  width: 18px;
 }
 .arrow-icon {
-  width: 12px;
+  width: 20px;
   margin-left: 10px;
+}
+.pointer {
+  cursor: pointer;
 }
 </style>

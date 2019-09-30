@@ -1,8 +1,8 @@
 <template>
   <div class="container main-content">
     <div class="topic">
-      <div class="title">OUR WORK</div>
-      <div class="sub-title">
+      <div class="sub-title">OUR WORK</div>
+      <div class="title">
         Here you can see our projects
       </div>
     </div>
@@ -61,5 +61,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 100px;
+}
+.together {
+  justify-content: space-between;
 }
 </style>

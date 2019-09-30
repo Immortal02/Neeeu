@@ -2,14 +2,19 @@
   <div class="vision">
     <div class="container main-content">
       <div class="topic">
-        <div class="title">OUR WORK</div>
-        <div class="sub-title">
+        <div class="sub-title">OUR APPROCH</div>
+        <div class="title">
           We believe the best design comes from a deep understanding of people,
           context, and technology.
         </div>
         <div class="detail">
-          <div>READ MORE</div>
-          <img class="arrow-icon" src="~/assets/icons/arrow-right.png" />
+          <div class="detail-btn" @click="gotoVisionPage()">
+            <span>READ MORE</span>
+            <img
+              class="arrow-icon"
+              src="~/assets/icons/arrow-right-white.svg"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -17,11 +22,20 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    gotoVisionPage() {
+      this.$router.push({
+        path: '/Vision'
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .vision {
   background-image: linear-gradient(
@@ -48,10 +62,16 @@ export default {}
     width: 90%;
 
     .sub-title {
+      color: $white;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      color: $white;
+
       @media (max-width: 850px) {
-        font-size: 33px;
-        font-weight: bold;
-        line-height: 1.1;
+        @include mobiletitleh3();
+        color: $white;
       }
     }
 
@@ -61,26 +81,14 @@ export default {}
   }
 
   .detail {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 2.08;
-    letter-spacing: 3px;
-    text-align: right;
-    padding: 30px 0px;
-    color: white;
+    @include buttonlinkwhite();
     align-items: center;
     display: flex;
     justify-content: flex-end;
+    margin-top: 50px;
 
-    .arrow {
-      font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont;
-      font-size: 20px;
-      color: white;
-      padding: 0px 10px;
-    }
-
-    @media (max-width: 850px) {
-      margin-top: 50px;
+    .detail-btn {
+      cursor: pointer;
     }
   }
 

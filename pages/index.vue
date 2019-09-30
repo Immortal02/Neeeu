@@ -9,8 +9,8 @@
     </div>
     <div class="container main main-content">
       <div class="topic">
-        <div class="title">OUR WORK</div>
-        <div class="sub-title">Featured projects</div>
+        <div class="sub-title">OUR WORK</div>
+        <div class="title">Featured projects</div>
       </div>
       <div class="featured-projects">
         <ProjectItem
@@ -28,8 +28,8 @@
     </div>
     <div class="main-content container">
       <div class="topic">
-        <div class="title">OUR EXPERTISES</div>
-        <div class="sub-title">We’re more than just a pretty face</div>
+        <div class="sub-title">OUR EXPERTISES</div>
+        <div class="title">We’re more than just a pretty face</div>
         <div class="content">
           Our team got the skills to pay the bills! NEEEU is your full service
           innovation solution. Some of our services:
@@ -48,8 +48,8 @@
     <div class="container main-content">
       <div class="skill">
         <div class="topic">
-          <div class="title">OUR SKILLSET</div>
-          <div class="sub-title">We’re more than just a pretty face</div>
+          <div class="sub-title">OUR SKILLSET</div>
+          <div class="title">We’re more than just a pretty face</div>
           <div class="content">
             Our team got the skills to pay the bills! NEEEU is your full service
             innovation solution. Some of our services:
@@ -125,6 +125,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .header {
   background-image: linear-gradient(to bottom, #0b004d, #560065),
@@ -134,7 +135,6 @@ export default {
   color: white;
   margin-top: -127px;
   height: 100vh;
-  font-family: 'Bluu Next';
 
   .header-container {
     height: 100%;
@@ -145,20 +145,17 @@ export default {
   }
 
   .header-title {
-    font-size: 90px;
+    @include desktoptitleh1();
     text-align: left;
-    font-weight: bold;
-    line-height: 1.11;
     width: 100%;
 
     @media (max-width: 1000px) {
       padding: 200px 30px 150px 30px;
-      font-size: 78px;
     }
 
     @media (max-width: $screen-xs-max) {
+      @include mobiletitleh1();
       padding: 200px 30px 150px 30px;
-      font-size: 66px;
       width: 100%;
     }
   }
@@ -190,12 +187,11 @@ export default {
   color: #262626;
 
   .content {
-    font-size: 20px;
-    font-weight: 300;
+    @include mobileplarge();
     margin: 30px 0px;
 
     @media (max-width: 1170px) {
-      font-size: 17px;
+      @include mobilepregular();
     }
   }
 
@@ -206,15 +202,10 @@ export default {
 
 .button-view {
   text-align: center;
-  cursor: pointer;
 
   .button {
+    @include buttonmain();
     color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Bluu Next';
-    line-height: normal;
-    letter-spacing: 0.36px;
     padding: 10px;
     width: 270px;
     text-align: center;
@@ -224,13 +215,13 @@ export default {
     justify-content: center;
     align-items: center;
     margin: 30px auto;
+    cursor: pointer;
 
     .icon {
       padding: 7px 0px 0px 10px;
     }
 
     @media (max-width: $screen-xs-max) {
-      font-size: 20px;
       padding: 15px;
       width: 270px;
     }
@@ -245,39 +236,16 @@ export default {
 }
 .skill {
   margin: 100px 0px;
-  color: #262626;
 
-  .title {
-    @media (max-width: $screen-xs-max) {
-      font-size: 12px;
-    }
-  }
-
-  .sub-title {
-    font-size: 80px;
-
-    @media (max-width: $screen-xs-max) {
-      font-size: 56px;
-    }
-  }
-
-  .content {
-    font-size: 20px;
-    font-weight: 300;
-    margin: 30px 0px 0px 0px;
-
-    @media (max-width: $screen-xs-max) {
-      font-size: 17px;
-      line-height: 1.76;
+  .topic {
+    .content {
+      margin: 30px 0px 0px 0px;
     }
   }
 }
 .skills {
   margin: 50px 20px;
-  font-size: 38px;
-  font-family: 'Bluu Next';
-  line-height: 1.16;
-  letter-spacing: normal;
+  @include desktopskill();
   color: white;
   padding: 50px 20px;
   background-image: linear-gradient(90deg, #3d0cd1, #ac00e8);
@@ -362,7 +330,7 @@ export default {
   }
 
   @media (max-width: $screen-xs-max) {
-    font-size: 16px;
+    @include mobileskill();
     padding: 50px 20px;
   }
 }

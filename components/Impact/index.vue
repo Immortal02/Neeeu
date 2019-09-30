@@ -28,13 +28,11 @@ export default {}
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .impact {
   background-image: linear-gradient(to right, #e74dcb, #9c2cd0);
-  color: white;
-  font-family: 'Bluu Next';
   padding: 100px 150px;
-  font-weight: bold;
   text-align: left;
   align-items: center;
   margin-bottom: 200px;
@@ -46,13 +44,10 @@ export default {}
   }
 }
 .label {
+  @include mobilesubtitle();
+  color: $white;
+  opacity: 0.7;
   text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 2.08;
-  letter-spacing: 3px;
   margin-bottom: 30px;
 }
 .body {
@@ -67,26 +62,16 @@ export default {}
   flex: 1;
 
   .title {
-    font-family: 'Bluu Next';
-    font-size: 100px;
-    font-weight: bold;
-    line-height: 0.8;
-    letter-spacing: 1.82px;
+    @include desktopnumbers();
 
     @media (max-width: $screen-xs-max) {
-      font-size: 90px;
-      font-weight: bold;
-      letter-spacing: 1.64px;
+      @include mobilenumbers();
     }
   }
 
   .content {
-    font-size: 18px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 30px;
-    letter-spacing: 0px;
+    @include mobileplarge();
+    color: $white;
     margin-top: 30px;
     max-width: 340px;
   }

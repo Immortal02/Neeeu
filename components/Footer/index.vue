@@ -3,14 +3,16 @@
     <div class="content">
       <div class="col">
         <div class="title">TALK TO NEU</div>
-        <div class="detail">hello@neeeu.io</div>
-        <div class="detail">+49 17696607238</div>
+        <div class="detail" @click="sendMail()">hello@neeeu.io</div>
+        <div class="detail" @click="callPhone()">+49 17696607238</div>
       </div>
       <div class="col">
         <div class="title">FIND NEEU</div>
-        <div class="detail">NEEEU Spaces GmbH</div>
-        <div class="detail">Mittenwalder str. 48</div>
-        <div class="detail">10961 Berlin, German 🇩🇪</div>
+        <div class="pointer" @click="showMap()">
+          <div class="detail">NEEEU Spaces GmbH</div>
+          <div class="detail">Mittenwalder str. 48</div>
+          <div class="detail">10961 Berlin, German 🇩🇪</div>
+        </div>
       </div>
       <div class="col">
         <div class="title">REGULATE NEEEU</div>
@@ -48,11 +50,26 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    sendMail() {
+      window.location.href = 'mailto:hello@neeeuio'
+    },
+    callPhone() {
+      window.location.href = 'tel:+4917696607238'
+    },
+    showMap() {
+      window.open(
+        'https://www.google.com/maps/dir/?api=1&34.1030032,-118.41046840000001'
+      )
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .footer {
   background-image: linear-gradient(to bottom, #0b004d, #560065),
@@ -64,7 +81,7 @@ export default {}
   padding: 50px 100px;
   opacity: 70;
 
-  @media (max-width: $screen-xs-max) {
+  @media (max-width: 680px) {
     padding: 25px 30px;
   }
 
@@ -77,37 +94,44 @@ export default {}
     .col {
       margin: 50px 0px;
       min-width: 200px;
+
+      @media (max-width: 1260px) {
+        flex-basis: initial;
+        flex-grow: initial;
+        width: 50%;
+      }
+
+      @media (max-width: 680px) {
+        flex-basis: 0;
+        flex-grow: 1;
+        width: 100%;
+      }
     }
 
     .social-col {
       display: flex;
       justify-content: space-between;
       margin-top: 60px;
+      max-width: 300px;
       .social-icons {
         color: white;
         font-size: 25px;
       }
     }
+
+    @media (max-width: 1260px) {
+      padding: 25px 30px;
+    }
   }
 }
 .title {
-  font-size: 12px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 2.08;
-  letter-spacing: 3px;
+  @include mobilesubtitle();
   color: white;
   opacity: 0.7;
   margin: 10px 0px;
 }
 .detail {
-  font-size: 17px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.76;
-  letter-spacing: normal;
+  @include mobilepregular();
   color: #ffffff;
   margin: 5px 0px;
 }

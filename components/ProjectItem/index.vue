@@ -1,16 +1,18 @@
 <template>
-  <div class="project-item" @click="itemClick()">
+  <div class="project-item" @click="itemClick(index)">
     <div :style="{ backgroundImage: `url(${image})` }" class="image" />
     <div class="main">
+      <div class="sub-title">{{ subtitle }}</div>
       <div class="title">{{ title }}</div>
-      <div class="sub-title">{{ subTitle }}</div>
       <div class="content">
         {{ content }}
       </div>
     </div>
     <div class="detail">
-      <div>READ MORE</div>
-      <img class="arrow-icon" src="~/assets/icons/arrow-right.png" />
+      <div class="detail-btn">
+        <span>READ MORE</span>
+        <img class="arrow-icon" src="~/assets/icons/arrow-right-black.svg" />
+      </div>
     </div>
   </div>
 </template>
@@ -18,6 +20,10 @@
 <script>
 export default {
   props: {
+    index: {
+      type: Number,
+      default: 1
+    },
     image: {
       type: String,
       default: ''
@@ -26,7 +32,7 @@ export default {
       type: String,
       default: ''
     },
-    subTitle: {
+    subtitle: {
       type: String,
       default: ''
     },
@@ -36,9 +42,9 @@ export default {
     }
   },
   methods: {
-    itemClick() {
+    itemClick(index) {
       this.$router.push({
-        path: '/ProjectDetail'
+        path: '/Project/' + index
       })
     }
   }
@@ -47,11 +53,12 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
 
 .project-item {
   color: #262626;
-  padding: 30px 20px;
-  width: 50%;
+  margin: 30px 20px;
+  width: 45%;
   cursor: pointer;
 
   @media (max-width: 860px) {
@@ -71,55 +78,43 @@ export default {
   padding: 20px;
   text-align: left;
 
-  .title {
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    line-height: 2.08;
-    letter-spacing: 3px;
-  }
-
   .sub-title {
-    font-size: 48px;
-    font-family: 'Bluu Next';
-    font-weight: bold;
-    margin: 10px 0px;
-    line-height: 1.21;
-    letter-spacing: normal;
+    @include mobilesubtitle();
+    text-transform: uppercase;
 
     @media (max-width: $screen-xs-max) {
-      font-size: 33px;
+      @include mobilesubtitle();
+    }
+  }
+
+  .title {
+    @include desktoptitleh3();
+    margin: 10px 0px;
+
+    @media (max-width: $screen-xs-max) {
+      @include mobiletitleh3();
     }
   }
 
   .content {
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1.6;
-    letter-spacing: normal;
+    @include mobileplarge();
 
     @media (max-width: $screen-xs-max) {
-      font-size: 18px;
+      @include mobilepmedium();
     }
   }
 }
 .detail {
-  font-size: 12px;
-  font-weight: bold;
+  @include buttonlinkblack();
   text-align: right;
   border-bottom: solid 1.2px #262626;
   padding: 10px 0px;
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  line-height: 2.08;
-  letter-spacing: 3px;
-  cursor: pointer;
 
-  .arrow {
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont;
-    font-size: 20px;
-    padding: 0px 10px;
+  .detail-btn {
+    cursor: pointer;
   }
 }
 </style>

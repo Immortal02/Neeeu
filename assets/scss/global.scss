@@ -5,3 +5,29 @@ $screen-md-min: 1181px;
 $screen-sm-max: ($screen-md-min - 1);
 $screen-lg-min: 1200px;
 $screen-md-max: ($screen-lg-min - 1);
+
+@mixin breakpoint($point) {
+  @if $point == large {
+     @media only screen and (min-width: 1366px) {
+        @content;
+     }
+  } 
+  @else if $point == desktop {
+     @media only screen and (min-width: 1024px) {
+        @content;
+     }
+  } 
+  @else if $point == tablet {
+     @media only screen and (min-width: 600px) {
+        @content;
+     }
+  }
+}
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

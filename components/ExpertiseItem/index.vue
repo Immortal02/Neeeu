@@ -6,8 +6,10 @@
         <div class="sub-title">{{ subTitle }}</div>
       </div>
       <div class="detail">
-        <div>TELL ME MORE</div>
-        <img class="arrow-icon" src="~/assets/icons/arrow-right.png" />
+        <div class="detail-btn">
+          <span>TELL ME MORE</span>
+          <img class="arrow-icon" src="~/assets/icons/arrow-right-white.svg" />
+        </div>
       </div>
     </div>
   </div>
@@ -49,6 +51,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/scss/global.scss';
+@import '~assets/scss/fontstyles.scss';
+
 .expertise-item {
   color: white;
   margin: 10px 0px;
@@ -63,7 +68,6 @@ export default {
 .image {
   padding: 30px 30px;
   text-align: left;
-  font-weight: 600;
   height: 600px;
   padding-top: 50px;
   background-size: cover;
@@ -81,47 +85,40 @@ export default {
   color: white;
 
   .title {
-    font-size: 48px;
-    font-family: 'Bluu Next';
-    font-weight: bold;
-    line-height: 1.21;
-    letter-spacing: normal;
+    @include desktoptitleh3();
+    color: $white;
     margin: 20px 0px;
 
     @media (max-width: 1170px) {
-      font-size: 33px;
+      @include mobiletitleh3();
+      color: $white;
     }
   }
 
   .sub-title {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.78;
-    letter-spacing: normal;
+    @include desktoppregular();
+    color: $white;
+
+    @media (max-width: 1170px) {
+      @include mobilepregular();
+      color: $white;
+    }
   }
 }
 .detail {
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 2.08;
-  letter-spacing: 3px;
+  @include buttonlinkwhite();
   text-align: right;
   border-bottom: solid 1px white;
   padding: 10px 0px;
-  color: white;
   position: absolute;
   bottom: 50px;
   width: calc(100% - 60px);
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  cursor: pointer;
 
-  .arrow {
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont;
-    font-size: 20px;
-    color: white;
-    padding: 0px 10px;
+  .detail-btn {
+    cursor: pointer;
   }
 
   @media (max-width: 1170px) {
